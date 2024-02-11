@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButton(0) && _shootTimer == 0f)
         {
