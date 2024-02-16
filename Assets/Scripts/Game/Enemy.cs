@@ -7,7 +7,7 @@ enum EnemyStrat
     ChasingPlayer
 }
 
-public class Enemy : MonoBehaviour
+public class Enemy : Drone
 {
     private Player _player;
     private Vector3 _targetPos;
@@ -20,14 +20,6 @@ public class Enemy : MonoBehaviour
     private float _shootTimer = 0f;
 
     [SerializeField] private Bullet _bulletPrefab;
-    private HealthManager _healthManager;
-
-    public HealthManager HP { get { return _healthManager; } }
-
-    private void Awake()
-    {
-        _healthManager = GetComponent<HealthManager>();
-    }
 
     public void SetPlayerReference(Player p)
     {
@@ -50,9 +42,7 @@ public class Enemy : MonoBehaviour
                 target.x += Random.Range(-3f, 3f);
                 target.y += Random.Range(-3f, 3f);
                 Vector3 direction = (target - transform.position).normalized;
-                Bullet b = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
-                b.SetDirection(direction);
-                b.SetIsPlayer(false);
+                Shoot(direction, _bulletPrefab);
             }
         }
         else if (_strat == EnemyStrat.Walking)

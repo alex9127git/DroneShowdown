@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Drone
 {
-    [SerializeField] private float _vx;
-    [SerializeField] private float _vy;
+    private float _vx;
+    private float _vy;
     private const float _accelPerSecond = 20f;
     private const float _decayPerSecond = 0.3f;
     private const float _maxv = 10f;
@@ -17,15 +17,12 @@ public class Player : MonoBehaviour
     private bool _isSurging = false;
 
     [SerializeField] private Renderer _renderer;
-    private HealthManager _healthManager;
 
-    public HealthManager HP { get { return _healthManager; } }
-
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         _vx = 0;
         _vy = 0;
-        _healthManager = GetComponent<HealthManager>();
     }
 
     private void Update()

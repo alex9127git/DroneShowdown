@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Vector3 _direction;
+    [SerializeField] private float _angle;
     private const float SpeedModifier = 20f;
     private bool _isPlayer;
 
     private void Update()
     {
-        transform.position += _direction * SpeedModifier * Time.deltaTime;
+        transform.position += transform.right * SpeedModifier * Time.deltaTime;
     }
 
-    public void SetDirection(Vector3 direction)
+    public void SetDirection(float angle)
     {
-        _direction = direction;
+        _angle = angle;
+        transform.localEulerAngles = new Vector3(0, 0, _angle);
     }
 
     public void SetIsPlayer(bool p)
@@ -25,12 +26,13 @@ public class Bullet : MonoBehaviour
     {
         if ((collision.gameObject.GetComponent<Enemy>() is Enemy enemy) && _isPlayer)
         {
-            enemy.HP.Damage(1);
+            enemy.Damage(1);
+            Destroy(gameObject);
         }
         if ((collision.gameObject.GetComponent<Player>() is Player player) && !_isPlayer) 
         { 
-            player.HP.Damage(1);
+            player.Damage(1);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

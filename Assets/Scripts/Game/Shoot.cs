@@ -4,30 +4,21 @@ public class Shoot : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private Bullet _bulletPrefab;
-    private float _cooldown = 1f;
-    private float _shootTimer = 0f;
+    [SerializeField] private Player _host;
+
+    private void Awake()
+    {
+        _host = GetComponent<Player>();
+    }
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && _shootTimer == 0f)
+        if (Input.GetMouseButton(0))
         {
-            CreateBullet();
-            _shootTimer = _cooldown;
+            Vector3 target = GetMousePos();
+            Vector3 direction = (transform.position - target).normalized;
+            _host.Shoot(direction, _bulletPrefab);
         }
-        _shootTimer -= Time.deltaTime;
-        if (_shootTimer < 0f)
-        {
-            _shootTimer = 0f;
-        }
-    }
-
-    private void CreateBullet()
-    {
-        Vector3 target = GetMousePos();
-        Vector3 direction = (transform.position - target).normalized;
-        Bullet b = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
-        b.SetDirection(direction);
-        b.SetIsPlayer(true);
     }
 
     private Vector3 GetMousePos()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1157275078425998915}
   - component: {fileID: 345197700765892922}
   m_Layer: 0
-  m_Name: Block
+  m_Name: WeaponBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e52afd01899b5e4b89196dcb1a5f71e, type: 2}
+  - {fileID: 2100000, guid: c84ce689b65dd06418464d596e465fe5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affa6cd143975754797b512d6dcf4672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 1
-  _attackType: 0
-  _cooldown: 0
-  _attackTimer: 0
+  hp: 1

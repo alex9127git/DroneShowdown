@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class Drone : MonoBehaviour
 {
     [SerializeField] private GameObject _structure;
+    private bool _isPlayer;
     private int _maxHP;
     private int _hp;
 
-    void Awake()
+    protected virtual void Awake()
     {
-        int layer = GetComponent<Player>() ? 6 : 7;
+        _isPlayer = this is Player;
+        int layer = _isPlayer ? 6 : 7;
         _maxHP = 0;
         foreach (Block block in _structure.GetComponentsInChildren<Block>())
         {
@@ -30,5 +32,13 @@ public class HealthManager : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+    }
+
+    public void Shoot(Vector3 direction, Bullet bulletPrefab)
+    {
+        foreach (Block block in _structure.GetComponentsInChildren<Block>())
+        {
+            block.Attack(direction, bulletPrefab, _isPlayer);
+        }
     }
 }
