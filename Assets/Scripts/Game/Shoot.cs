@@ -16,8 +16,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 target = GetMousePos();
-            Vector3 direction = (transform.position - target).normalized;
-            _host.Shoot(direction, _bulletPrefab);
+            _host.Shoot(target, _bulletPrefab);
         }
     }
 
@@ -27,6 +26,9 @@ public class Shoot : MonoBehaviour
         mousePos.z = _camera.transform.position.z;
         Vector3 worldPos = _camera.ScreenToWorldPoint(mousePos);
         worldPos.z = 0f;
+        Vector3 cameraPos = _camera.transform.position;
+        cameraPos.z = 0f;
+        worldPos -= (worldPos - cameraPos) * 2f;
         return worldPos;
     }
 }

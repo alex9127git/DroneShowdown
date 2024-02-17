@@ -16,7 +16,9 @@ public class Drone : MonoBehaviour
         {
             _maxHP += block.HP;
             block.gameObject.layer = layer;
+            block.UpdateHost();
         }
+        if (!_isPlayer) _maxHP = (int)(_maxHP * Mathf.Sqrt(EnemySpawner.Instance.Difficulty));
         _hp = _maxHP;
     }
 
@@ -34,11 +36,11 @@ public class Drone : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Shoot(Vector3 direction, Bullet bulletPrefab)
+    public void Shoot(Vector3 target, Bullet bulletPrefab)
     {
         foreach (Block block in _structure.GetComponentsInChildren<Block>())
         {
-            block.Attack(direction, bulletPrefab, _isPlayer);
+            block.Attack(target, bulletPrefab, _isPlayer);
         }
     }
 }

@@ -3,22 +3,20 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _angle;
-    private const float SpeedModifier = 20f;
+    private float _speedModifier = 20f;
     private bool _isPlayer;
 
     private void Update()
     {
-        transform.position += transform.right * SpeedModifier * Time.deltaTime;
+        transform.position += transform.right * _speedModifier * Time.deltaTime;
     }
 
-    public void SetDirection(float angle)
+    public void Init(float angle, float speed, bool p)
     {
+        transform.parent = BulletParent.Instance.transform;
         _angle = angle;
         transform.localEulerAngles = new Vector3(0, 0, _angle);
-    }
-
-    public void SetIsPlayer(bool p)
-    {
+        _speedModifier = speed;
         _isPlayer = p;
     }
 
@@ -30,8 +28,8 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
         if ((collision.gameObject.GetComponent<Player>() is Player player) && !_isPlayer) 
-        { 
-            player.Damage(1);
+        {
+            if (!player.IsSurging) player.Damage(1);
             Destroy(gameObject);
         }
     }

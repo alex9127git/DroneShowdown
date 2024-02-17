@@ -16,6 +16,8 @@ public class Player : Drone
     private float _surgingProcess = 0f;
     private bool _isSurging = false;
 
+    public bool IsSurging {  get { return _isSurging; } }
+
     [SerializeField] private Renderer _renderer;
 
     protected override void Awake()

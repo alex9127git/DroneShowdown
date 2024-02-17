@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1157275078425998915}
   - component: {fileID: 345197700765892922}
   m_Layer: 0
-  m_Name: WeaponBlock
+  m_Name: SpreadFiveBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423731996092751463}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!33 &3742014333336931913
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c84ce689b65dd06418464d596e465fe5, type: 2}
+  - {fileID: 2100000, guid: 2599628a447ec5e4fb9890452d930d26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,4 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affa6cd143975754797b512d6dcf4672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  _hp: 0
+  _attackType: 3
+  _cooldown: 2.5
+  _attackTimer: 0
+  _projSpeed: 10

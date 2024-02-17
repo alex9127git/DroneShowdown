@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 enum AttackType
 {
@@ -6,7 +7,6 @@ enum AttackType
     Straight,
     Spread,
     BigSpread,
-    Fast,
     Round
 }
 
@@ -16,8 +16,15 @@ public class Block : MonoBehaviour
     [SerializeField] private AttackType _attackType;
     [SerializeField] private float _cooldown;
     [SerializeField] private float _attackTimer = 0f;
+    [SerializeField] private float _projSpeed = 20f;
+    private bool _isPlayer;
 
     public int HP { get { return _hp; } }
+
+    public void UpdateHost()
+    {
+        _isPlayer = gameObject.layer == 6;
+    }
 
     private void Update()
     {
@@ -32,17 +39,22 @@ public class Block : MonoBehaviour
         return angle;
     }
 
-    public void Attack(Vector3 direction, Bullet bulletPrefab, bool pl)
+    public void Attack(Vector3 target, Bullet bulletPrefab, bool pl)
     {
         if (_attackTimer > 0f) return;
         if (_attackType == AttackType.Nothing) return;
+        if (!_isPlayer)
+        {
+            target.x += Random.Range(-1.5f, 1.5f);
+            target.y += Random.Range(-1.5f, 1.5f);
+        }
+        Vector3 direction = (target - transform.position).normalized;
         float angle = GetAngle(direction);
         Debug.Log(angle);
-        _attackTimer = _cooldown;
+        _attackTimer = _cooldown + (_isPlayer ? 0 : Random.Range(0f, 0.1f));
         switch (_attackType)
         {
             case AttackType.Straight:
-            case AttackType.Fast:
                 ShootAtAngle(angle, bulletPrefab, pl); break;
             case AttackType.Spread:
                 ShootAtAngle(angle, bulletPrefab, pl);
@@ -69,7 +81,6 @@ public class Block : MonoBehaviour
     {
         angle %= 360;
         Bullet b = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        b.SetDirection(angle);
-        b.SetIsPlayer(pl);
+        b.Init(angle, _projSpeed, pl);
     }
 }
