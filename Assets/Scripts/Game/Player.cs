@@ -16,6 +16,9 @@ public class Player : Drone
     private float _surgingProcess = 0f;
     private bool _isSurging = false;
 
+    [SerializeField] private int _earnedTokens = 0;
+
+    public int EarnedTokens { get { return _earnedTokens; } }
     public bool IsSurging {  get { return _isSurging; } }
 
     [SerializeField] private Renderer _renderer;
@@ -29,6 +32,7 @@ public class Player : Drone
 
     private void Update()
     {
+        if (!_alive) return;
         transform.position += new Vector3(_vx, _vy) * Time.deltaTime;
         if (_isSurging)
         {
@@ -109,5 +113,10 @@ public class Player : Drone
     public Vector3 GetVelocity()
     {
         return new Vector3(_vx, _vy);
+    }
+
+    public void AddTokens(int amount)
+    {
+        _earnedTokens += amount;
     }
 }

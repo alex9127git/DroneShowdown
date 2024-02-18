@@ -33,8 +33,8 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(0.2f, _maxTimer));
             Vector3 enemyPos = _player.transform.position;
-            enemyPos.x += Random.Range(50f, 200f) * (Random.Range(0f, 1f) < 0.5f ? -1 : 1);
-            enemyPos.y += Random.Range(50f, 200f) * (Random.Range(0f, 1f) < 0.5f ? -1 : 1);
+            enemyPos.x += Random.Range(50f, 125f) * (Random.Range(0f, 1f) < 0.5f ? -1 : 1);
+            enemyPos.y += Random.Range(50f, 125f) * (Random.Range(0f, 1f) < 0.5f ? -1 : 1);
             Enemy prefab = null;
             float difficultyFactor = Mathf.Clamp((Difficulty - 1) / 10 + 1, 0f, 2f);
             float distanceFactor = Mathf.Clamp((_player.transform.position.magnitude) / 2500 + 1, 0f, 2f);

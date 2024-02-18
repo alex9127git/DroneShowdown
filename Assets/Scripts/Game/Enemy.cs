@@ -28,6 +28,7 @@ public class Enemy : Drone
 
     private void Update()
     {
+        if (!_alive) return;
         UpdateStrat();
         if (_strat == EnemyStrat.ChasingPlayer)
         {

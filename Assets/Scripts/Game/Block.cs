@@ -50,7 +50,6 @@ public class Block : MonoBehaviour
         }
         Vector3 direction = (target - transform.position).normalized;
         float angle = GetAngle(direction);
-        Debug.Log(angle);
         _attackTimer = _cooldown + (_isPlayer ? 0 : Random.Range(0f, 0.1f));
         switch (_attackType)
         {
