@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affa6cd143975754797b512d6dcf4672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 3
+  _hp: 2
   _attackType: 4
-  _cooldown: 3
+  _cooldown: 1.2
   _attackTimer: 0
-  _projSpeed: 15
+  _projSpeed: 10

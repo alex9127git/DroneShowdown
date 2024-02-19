@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,9 +8,12 @@ public class Drone : MonoBehaviour
     [SerializeField] private GameObject _structure;
     [SerializeField] private ParticleSystem _dieEffect;
     private bool _isPlayer;
-    private int _maxHP;
-    private int _hp;
+    protected int _maxHP;
+    protected int _hp;
     protected bool _alive = true;
+
+    public int HP { get => _hp; }
+    public int MaxHP { get => _maxHP; }
 
     public bool Alive { get { return _alive; } }
 

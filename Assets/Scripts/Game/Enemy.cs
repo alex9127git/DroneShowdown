@@ -29,6 +29,7 @@ public class Enemy : Drone
     private void Update()
     {
         if (!_alive) return;
+        if (DistanceToPlayer() > 300f) Destroy(gameObject);
         UpdateStrat();
         if (_strat == EnemyStrat.ChasingPlayer)
         {

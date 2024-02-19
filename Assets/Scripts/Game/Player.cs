@@ -4,9 +4,9 @@ public class Player : Drone
 {
     private float _vx;
     private float _vy;
-    private const float _accelPerSecond = 20f;
+    private const float _accelPerSecond = 30f;
     private const float _decayPerSecond = 0.3f;
-    private const float _maxv = 10f;
+    private const float _maxv = 12f;
 
     private float _surgeChargingProcess = 0f;
     private float _surgeX = 0f;
@@ -15,6 +15,9 @@ public class Player : Drone
     private float _surgeDecayY = 0f;
     private float _surgingProcess = 0f;
     private bool _isSurging = false;
+
+    private float _iframeTimer = 0f;
+    public float IFrameTimer { get => _iframeTimer; }
 
     [SerializeField] private int _earnedTokens = 0;
 
@@ -30,8 +33,14 @@ public class Player : Drone
         _vy = 0;
     }
 
+    public void AddIFrames()
+    {
+        _iframeTimer = 0.3f;
+    }
+
     private void Update()
     {
+        _iframeTimer -= Time.deltaTime;
         if (!_alive) return;
         transform.position += new Vector3(_vx, _vy) * Time.deltaTime;
         if (_isSurging)

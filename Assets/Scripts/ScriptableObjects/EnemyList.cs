@@ -1,12 +1,25 @@
 using System;
 using UnityEngine;
 
+
+public enum EnemyClass
+{
+    Neutral,
+    Armed,
+    Heavy,
+    Blitz,
+    Watcher
+}
+
+
 [Serializable]
 public class EnemyEntry
 {
     [SerializeField] private Enemy _enemy;
+    [SerializeField] private EnemyClass _enemyClass;
     [SerializeField] private float _chanceToSpawn;
 
+    public EnemyClass Class { get { return _enemyClass; } }
     public float Chance { get { return _chanceToSpawn; } }
     public Enemy Prefab { get { return _enemy; } }
 }
