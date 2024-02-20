@@ -5,10 +5,12 @@ using UnityEngine;
 public class ProgressData
 {
     [SerializeField] public int Tokens;
+    [SerializeField] public BlockData[] PlayerDrone;
 
     public static ProgressData GetEmptyProgressData()
     {
         ProgressData data = new ProgressData();
+
         data.Tokens = 0;
         return data;
     }
@@ -34,6 +36,12 @@ public class Progress : MonoBehaviour
     public void AddTokens(int amount)
     {
         Data.Tokens += amount;
+        Save();
+    }
+
+    public void SaveDrone(BlockData[] blocks)
+    {
+        Data.PlayerDrone = blocks;
         Save();
     }
 

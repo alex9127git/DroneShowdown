@@ -1,5 +1,6 @@
+using System;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using Random = UnityEngine.Random;
 
 enum AttackType
 {
@@ -10,6 +11,7 @@ enum AttackType
     Round
 }
 
+[Serializable]
 public class Block : MonoBehaviour
 {
     [SerializeField] private int _hp;
@@ -17,9 +19,18 @@ public class Block : MonoBehaviour
     [SerializeField] private float _cooldown;
     [SerializeField] private float _attackTimer = 0f;
     [SerializeField] private float _projSpeed = 20f;
+
+    private int _x;
+    private int _y;
     private bool _isPlayer;
 
     public int HP { get { return _hp; } }
+
+    public void SetCoords(int x, int y)
+    {
+        _x = x;
+        _y = y;
+    }
 
     public void UpdateHost()
     {
@@ -28,6 +39,7 @@ public class Block : MonoBehaviour
 
     private void Update()
     {
+        transform.localPosition = new Vector3(_x, _y);
         _attackTimer -= Time.deltaTime;
         if (_attackTimer < 0f) _attackTimer = 0f;
     }

@@ -7,6 +7,6 @@ public class TokenCounter : MonoBehaviour
 
     private void Update()
     {
-        _tokenText.text = Progress.Instance.Data.Tokens.ToString();
+        _tokenText.text = Progress.Instance != null ? Progress.Instance.Data.Tokens.ToString() : "0";
     }
 }
