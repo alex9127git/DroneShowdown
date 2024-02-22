@@ -5,7 +5,8 @@ enum Scenes
 {
     MenuScene,
     GameScene,
-    BuildScene
+    BuildScene,
+    UpgradeScene
 }
 
 public class Menu : MonoBehaviour
@@ -23,5 +24,10 @@ public class Menu : MonoBehaviour
     public static void LoadBuilder()
     {
         SceneManager.LoadScene((int)Scenes.BuildScene);
+    }
+
+    public static void LoadUpgrades()
+    {
+        SceneManager.LoadScene((int)Scenes.UpgradeScene);
     }
 }

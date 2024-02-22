@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.gameObject.GetComponent<Enemy>() is Enemy enemy) && _isPlayer && _active)
+        if ((collision.gameObject.GetComponent<Enemy>() is Enemy enemy) && _isPlayer && _active && enemy.Alive)
         {
             enemy.Damage(1);
             _active = false;
@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
             {
                 player.Damage(1);
                 player.AddIFrames();
+                Vignette.Instance.Flash();
             }
             _active = false;
             Destroy(gameObject);

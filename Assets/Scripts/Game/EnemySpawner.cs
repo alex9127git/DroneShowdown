@@ -47,6 +47,7 @@ public class EnemySpawner : MonoBehaviour
             bool blitzFlag = enemyPos.x <= 500 && enemyPos.y <= 500;
             bool heavyFlag = enemyPos.x <= 500 && enemyPos.y >= -500;
             int totalFlags = (armedFlag ? 1 : 0) + (watcherFlag ? 1 : 0) + (blitzFlag ? 1 : 0) + (heavyFlag ? 1 : 0);
+            EnemyClass c = EnemyClass.Neutral;
             foreach (EnemyEntry entry in _enemyList.Enemies)
             {
                 if (!armedFlag && entry.Class == EnemyClass.Armed) continue;
@@ -56,11 +57,13 @@ public class EnemySpawner : MonoBehaviour
                 if (Random.Range(0f, 100f) < entry.Chance * difficultyFactor * distanceFactor / totalFlags)
                 {
                     prefab = entry.Prefab;
+                    c = entry.Class;
                     break;
                 }
             }
             Enemy e = Instantiate(prefab, enemyPos, Quaternion.identity);
             e.SetPlayerReference(_player);
+            e.Class = c;
             e.transform.parent = transform;
         }
     }

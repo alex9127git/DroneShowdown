@@ -28,9 +28,17 @@ public class Player : Drone
 
     protected override void Awake()
     {
-        base.Awake();
-        _vx = 0;
-        _vy = 0;
+        LoadStructure();
+        CalculateHP();
+    }
+
+    private void LoadStructure()
+    {
+        BlockData[] blocks = Progress.Instance.LoadDrone();
+        foreach (BlockData bd in blocks)
+        {
+            Instantiate(bd.Prefab, new Vector3(bd.X, bd.Y), Quaternion.Euler(0, 0, -180), _structure.transform);
+        }
     }
 
     public void AddIFrames()

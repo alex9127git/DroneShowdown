@@ -12,14 +12,19 @@ public class Enemy : Drone
     private Player _player;
     private Vector3 _targetPos;
     private EnemyStrat _strat;
+    private EnemyClass _class;
     private float _timer;
-    [SerializeField] private float SpeedModifier = 8f;
     private const float AggroDistance = 40f;
     private Vector3 _velocity;
     private float _cooldown = 0.1f;
     private float _shootTimer = 0f;
 
     [SerializeField] private Bullet _bulletPrefab;
+    [SerializeField] private float SpeedModifier = 8f;
+    [SerializeField] private bool _isBoss = false;
+
+    public EnemyClass Class { get => _class; set => _class = value; }
+    public bool IsBoss { get => _isBoss; }
 
     public void SetPlayerReference(Player p)
     {

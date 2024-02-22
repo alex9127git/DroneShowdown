@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 88169953}
   - component: {fileID: 88169955}
   - component: {fileID: 88169954}
+  - component: {fileID: 88169956}
   m_Layer: 5
   m_Name: RoundWeaponButton
   m_TagString: Untagged
@@ -339,7 +340,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 200245764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 88169956}
+        m_TargetAssemblyTypeName: BuyBlockButton, Assembly-CSharp
+        m_MethodName: BuyBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &88169955
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -348,6 +361,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88169952}
   m_CullTransparentMesh: 1
+--- !u!114 &88169956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88169952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807bf2b4936dd540a26c24327014d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 1805161950}
+  _index: 5
 --- !u!1 &108581896
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +1000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422"
+  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422\n(69/420)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0c56b5a5d42ff143a9f18956db87265, type: 2}
   m_sharedMaterial: {fileID: -8265533695555004709, guid: c0c56b5a5d42ff143a9f18956db87265,
@@ -1001,8 +1028,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1062,6 +1089,7 @@ GameObject:
   - component: {fileID: 463049606}
   - component: {fileID: 463049608}
   - component: {fileID: 463049607}
+  - component: {fileID: 463049609}
   m_Layer: 5
   m_Name: Spread3WeaponButton
   m_TagString: Untagged
@@ -1133,7 +1161,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1526842491}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 463049609}
+        m_TargetAssemblyTypeName: BuyBlockButton, Assembly-CSharp
+        m_MethodName: BuyBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &463049608
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1142,6 +1182,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463049605}
   m_CullTransparentMesh: 1
+--- !u!114 &463049609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463049605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807bf2b4936dd540a26c24327014d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 2127647942}
+  _index: 3
 --- !u!1 &466920938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,7 +1653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422"
+  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422\n(69/420)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0c56b5a5d42ff143a9f18956db87265, type: 2}
   m_sharedMaterial: {fileID: -8265533695555004709, guid: c0c56b5a5d42ff143a9f18956db87265,
@@ -1627,8 +1681,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1734,7 +1788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422"
+  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422\n(69/420)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0c56b5a5d42ff143a9f18956db87265, type: 2}
   m_sharedMaterial: {fileID: -8265533695555004709, guid: c0c56b5a5d42ff143a9f18956db87265,
@@ -1762,8 +1816,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2177,6 +2231,7 @@ GameObject:
   - component: {fileID: 872678677}
   - component: {fileID: 872678679}
   - component: {fileID: 872678678}
+  - component: {fileID: 872678680}
   m_Layer: 5
   m_Name: BlockButton
   m_TagString: Untagged
@@ -2248,7 +2303,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 927177229}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 872678680}
+        m_TargetAssemblyTypeName: BuyBlockButton, Assembly-CSharp
+        m_MethodName: BuyBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &872678679
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2257,6 +2324,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872678676}
   m_CullTransparentMesh: 1
+--- !u!114 &872678680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872678676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807bf2b4936dd540a26c24327014d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 668618810}
+  _index: 0
 --- !u!1 &883116869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,20 +2427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e773c307b749144921dca2f297f4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockSprites:
-  - {fileID: 21300000, guid: 68794e5aec8b5444baf921a2ea9b1bde, type: 3}
-  - {fileID: 21300000, guid: 823b8392367dd514b9af41c0bbfc7b27, type: 3}
-  - {fileID: 21300000, guid: 09451ffaa6118be44a9c2565d66ede65, type: 3}
-  - {fileID: 21300000, guid: 429bafb139fa90243955d241b65ed103, type: 3}
-  - {fileID: 21300000, guid: 5d0fa6737b9a38545858aa2159aee59c, type: 3}
-  - {fileID: 21300000, guid: fa51750c179014f4dac3e02dbcc5941e, type: 3}
-  _blockPrefabs:
-  - {fileID: 345197700765892922, guid: d456d192029fd184b82bd09cb7cc15ea, type: 3}
-  - {fileID: 345197700765892922, guid: e5427982dffb2ef4bbd4d65b893326e5, type: 3}
-  - {fileID: 345197700765892922, guid: a4bd064db5e0cbb4f8dd5193d0e4ff30, type: 3}
-  - {fileID: 345197700765892922, guid: d6db85a1787e7964bba7661acbde8e4a, type: 3}
-  - {fileID: 345197700765892922, guid: 3e1812506d8dc774c9d2e801eebaa90f, type: 3}
-  - {fileID: 345197700765892922, guid: 17e1acfe75fd3044f9f8d2d068c154f8, type: 3}
+  _blocks: {fileID: 11400000, guid: 9b2726bd0a9ca5048b1403cf07219af1, type: 2}
   _corePrefab: {fileID: 142220244666611111, guid: f723186cede35f546a401d035d7a6607,
     type: 3}
   _tilePrefab: {fileID: 1830897239982644442, guid: a2065f9f8ebbcd744a54cc5a1424143d,
@@ -3391,6 +3459,7 @@ GameObject:
   - component: {fileID: 1310955750}
   - component: {fileID: 1310955752}
   - component: {fileID: 1310955751}
+  - component: {fileID: 1310955753}
   m_Layer: 5
   m_Name: FastWeaponButton
   m_TagString: Untagged
@@ -3462,7 +3531,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 466920940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1310955753}
+        m_TargetAssemblyTypeName: BuyBlockButton, Assembly-CSharp
+        m_MethodName: BuyBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1310955752
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3471,6 +3552,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310955749}
   m_CullTransparentMesh: 1
+--- !u!114 &1310955753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310955749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807bf2b4936dd540a26c24327014d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 1868016562}
+  _index: 2
 --- !u!1 &1328211648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4372,7 +4467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422"
+  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422\n(69/420)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0c56b5a5d42ff143a9f18956db87265, type: 2}
   m_sharedMaterial: {fileID: -8265533695555004709, guid: c0c56b5a5d42ff143a9f18956db87265,
@@ -4400,8 +4495,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4641,7 +4736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422"
+  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422\n(69/420)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0c56b5a5d42ff143a9f18956db87265, type: 2}
   m_sharedMaterial: {fileID: -8265533695555004709, guid: c0c56b5a5d42ff143a9f18956db87265,
@@ -4669,8 +4764,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4730,6 +4825,7 @@ GameObject:
   - component: {fileID: 1903208792}
   - component: {fileID: 1903208794}
   - component: {fileID: 1903208793}
+  - component: {fileID: 1903208795}
   m_Layer: 5
   m_Name: Spread5WeaponButton
   m_TagString: Untagged
@@ -4801,7 +4897,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 108581898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1903208795}
+        m_TargetAssemblyTypeName: BuyBlockButton, Assembly-CSharp
+        m_MethodName: BuyBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1903208794
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4810,6 +4918,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903208791}
   m_CullTransparentMesh: 1
+--- !u!114 &1903208795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903208791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807bf2b4936dd540a26c24327014d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 694256271}
+  _index: 4
 --- !u!1 &1970019008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,6 +4943,7 @@ GameObject:
   - component: {fileID: 1970019009}
   - component: {fileID: 1970019011}
   - component: {fileID: 1970019010}
+  - component: {fileID: 1970019012}
   m_Layer: 5
   m_Name: WeaponButton
   m_TagString: Untagged
@@ -4892,7 +5015,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1269370284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1970019012}
+        m_TargetAssemblyTypeName: BuyBlockButton, Assembly-CSharp
+        m_MethodName: BuyBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1970019011
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4901,6 +5036,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970019008}
   m_CullTransparentMesh: 1
+--- !u!114 &1970019012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970019008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5807bf2b4936dd540a26c24327014d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 426848033}
+  _index: 1
 --- !u!1 &2022651632
 GameObject:
   m_ObjectHideFlags: 0
@@ -5304,7 +5453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422"
+  m_text: "\u041A\u0443\u043F\u0438\u0442\u044C\n69 \u0422\n(69/420)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c0c56b5a5d42ff143a9f18956db87265, type: 2}
   m_sharedMaterial: {fileID: -8265533695555004709, guid: c0c56b5a5d42ff143a9f18956db87265,
@@ -5332,8 +5481,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

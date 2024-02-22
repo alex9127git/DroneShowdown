@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Drone : MonoBehaviour
 {
-    [SerializeField] private GameObject _structure;
+    [SerializeField] protected GameObject _structure;
     [SerializeField] private ParticleSystem _dieEffect;
     private bool _isPlayer;
     protected int _maxHP;
@@ -17,7 +17,7 @@ public class Drone : MonoBehaviour
 
     public bool Alive { get { return _alive; } }
 
-    protected virtual void Awake()
+    protected void CalculateHP()
     {
         _isPlayer = this is Player;
         int layer = _isPlayer ? 6 : 7;
@@ -32,6 +32,11 @@ public class Drone : MonoBehaviour
         _hp = _maxHP;
     }
 
+    protected virtual void Awake()
+    {
+        CalculateHP();
+    }
+
     public void Damage(int damage)
     {
         _hp -= damage;
@@ -41,6 +46,15 @@ public class Drone : MonoBehaviour
             Die();
         }
     }
+
+    public void RestoreHP(int hp)
+    {
+        _hp += hp;
+        if (_hp >= MaxHP)
+        {
+            _hp = MaxHP;
+        }
+    }
     
     public void Die()
     {
@@ -48,6 +62,23 @@ public class Drone : MonoBehaviour
         if (!_isPlayer)
         {
             TokenManager.Instance.SpawnTokens(_maxHP, transform.position);
+            Enemy e = GetComponent<Enemy>();
+            Player p = FindObjectOfType<Player>();
+            if (e.IsBoss)
+            {
+                switch (e.Class)
+                {
+                    case EnemyClass.Armed: Progress.Instance.AddSigil(0); break;
+                    case EnemyClass.Blitz: Progress.Instance.AddSigil(1); break;
+                    case EnemyClass.Heavy: Progress.Instance.AddSigil(2); break;
+                    case EnemyClass.Watcher: Progress.Instance.AddSigil(3); break;
+                }
+                p.RestoreHP(3);
+            }
+            else
+            {
+                if (e.Class != EnemyClass.Neutral) p.RestoreHP(1);
+            }
         }
         else
         {

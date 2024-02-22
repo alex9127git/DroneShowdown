@@ -76,9 +76,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _structure: {fileID: 5825776956325151444}
   _dieEffect: {fileID: 6691773800151559684}
-  SpeedModifier: 2
   _bulletPrefab: {fileID: 940008468791664581, guid: 43adaefbbdc61304987abde46b7867ef,
     type: 3}
+  SpeedModifier: 2
+  _isBoss: 1
 --- !u!1 &5825776956325151444
 GameObject:
   m_ObjectHideFlags: 0

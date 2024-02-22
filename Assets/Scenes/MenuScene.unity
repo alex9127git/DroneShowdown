@@ -317,7 +317,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 332588386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 310096798}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: LoadUpgrades
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &332588386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,7 +2017,7 @@ Transform:
   m_GameObject: {fileID: 2097040446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 463.16794, y: 350.01007, z: -498.4945}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2025,6 +2037,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Tokens: 0
+    PlayerDrone: []
+    BoughtBlocks: 
+    Sigils: 
+    SigilUpgradeLevels: 
 --- !u!1 &2120488781
 GameObject:
   m_ObjectHideFlags: 0
