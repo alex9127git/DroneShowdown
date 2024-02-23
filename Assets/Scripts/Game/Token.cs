@@ -21,6 +21,7 @@ public class Token : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.Instance.Paused) return;
         transform.position += _speed * Time.deltaTime;
         _speed *= Mathf.Pow(_speedDecay, Time.deltaTime);
     }
@@ -31,6 +32,7 @@ public class Token : MonoBehaviour
         {
             player.AddTokens(_value);
             _collected = true;
+            Audio.Instance.TokenPickUp.Play();
             Destroy(gameObject);
         }
     }

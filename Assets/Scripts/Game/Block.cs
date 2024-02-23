@@ -6,6 +6,7 @@ enum AttackType
 {
     Nothing,
     Straight,
+    Fast,
     Spread,
     BigSpread,
     Round
@@ -31,6 +32,7 @@ public class Block : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.Instance.Paused) return;
         _attackTimer -= Time.deltaTime;
         if (_attackTimer < 0f) _attackTimer = 0f;
     }
@@ -42,10 +44,10 @@ public class Block : MonoBehaviour
         return angle;
     }
 
-    public void Attack(Vector3 target, Bullet bulletPrefab, bool pl)
+    public bool Attack(Vector3 target, Bullet bulletPrefab, bool pl)
     {
-        if (_attackTimer > 0f) return;
-        if (_attackType == AttackType.Nothing) return;
+        if (_attackTimer > 0f) return false;
+        if (_attackType == AttackType.Nothing) return false;
         if (!_isPlayer)
         {
             target.x += Random.Range(-1.5f, 1.5f);
@@ -57,32 +59,38 @@ public class Block : MonoBehaviour
         switch (_attackType)
         {
             case AttackType.Straight:
-                ShootAtAngle(angle, bulletPrefab, pl); break;
+                ShootAtAngle(angle, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[0] * 0.2) ? 2 : 1); break;
+            case AttackType.Fast:
+                ShootAtAngle(angle, bulletPrefab, pl, 1);
+                _attackTimer *= _isPlayer ? (1 - Progress.Instance.Data.SigilUpgradeLevels[1] * 0.1f) : 1;
+                break;
             case AttackType.Spread:
-                ShootAtAngle(angle, bulletPrefab, pl);
-                ShootAtAngle(angle - 30, bulletPrefab, pl);
-                ShootAtAngle(angle + 30, bulletPrefab, pl);
+                ShootAtAngle(angle, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
+                ShootAtAngle(angle - 30, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
+                ShootAtAngle(angle + 30, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
                 break;
             case AttackType.BigSpread:
-                ShootAtAngle(angle, bulletPrefab, pl);
-                ShootAtAngle(angle - 20, bulletPrefab, pl);
-                ShootAtAngle(angle + 20, bulletPrefab, pl);
-                ShootAtAngle(angle - 40, bulletPrefab, pl);
-                ShootAtAngle(angle + 40, bulletPrefab, pl);
+                ShootAtAngle(angle, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
+                ShootAtAngle(angle - 20, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
+                ShootAtAngle(angle + 20, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
+                ShootAtAngle(angle - 40, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
+                ShootAtAngle(angle + 40, bulletPrefab, pl, (_isPlayer && Random.Range(0f, 1f) <= Progress.Instance.Data.SigilUpgradeLevels[2] * 0.2) ? 2 : 1);
                 break;
             case AttackType.Round:
                 for (int i = 0; i < 6; i++)
                 {
-                    ShootAtAngle(angle + i * 60, bulletPrefab, pl);
+                    ShootAtAngle(angle + i * 60, bulletPrefab, pl, 1);
                 }
+                _attackTimer *= _isPlayer ? (1 - Progress.Instance.Data.SigilUpgradeLevels[3] * 0.1f) : 1;
                 break;
         }
+        return true;
     }
 
-    public void ShootAtAngle(float angle, Bullet bulletPrefab, bool pl)
+    public void ShootAtAngle(float angle, Bullet bulletPrefab, bool pl, int dmg)
     {
         angle %= 360;
         Bullet b = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        b.Init(angle, _projSpeed, pl);
+        b.Init(angle, _projSpeed, pl, dmg);
     }
 }

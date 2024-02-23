@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.Instance.Paused) return;
         _difficulty += _deltaDifficulty * Time.deltaTime;
         _maxTimer = 1f - 0.001f * _difficulty * _difficulty;
         _maxTimer = Mathf.Clamp(_maxTimer, 0.2f, 1f);
@@ -32,10 +33,8 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(0.2f, _maxTimer));
-            if (transform.childCount >= 50)
-            {
-                continue;
-            }
+            if (transform.childCount >= 50) continue;
+            if (PauseManager.Instance.Paused) continue;
             Vector3 enemyPos = _player.transform.position;
             enemyPos.x += Random.Range(30f, 150f) * (Random.Range(0f, 1f) < 0.5f ? -1 : 1);
             enemyPos.y += Random.Range(30f, 150f) * (Random.Range(0f, 1f) < 0.5f ? -1 : 1);

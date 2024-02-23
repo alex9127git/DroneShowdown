@@ -61,6 +61,7 @@ public class Drone : MonoBehaviour
         Destroy(_structure.gameObject);
         if (!_isPlayer)
         {
+            Audio.Instance.Explosion.Play();
             TokenManager.Instance.SpawnTokens(_maxHP, transform.position);
             Enemy e = GetComponent<Enemy>();
             Player p = FindObjectOfType<Player>();
@@ -73,6 +74,7 @@ public class Drone : MonoBehaviour
                     case EnemyClass.Heavy: Progress.Instance.AddSigil(2); break;
                     case EnemyClass.Watcher: Progress.Instance.AddSigil(3); break;
                 }
+                FindObjectOfType<SigilText>().Show();
                 p.RestoreHP(3);
             }
             else
@@ -84,6 +86,7 @@ public class Drone : MonoBehaviour
         {
             Player p = GetComponent<Player>();
             Progress.Instance.AddTokens(p.EarnedTokens);
+            Audio.Instance.PlayerExplosion.Play();
         }
         _dieEffect.Play();
         StartCoroutine(ScheduleDestroy());
@@ -91,10 +94,12 @@ public class Drone : MonoBehaviour
 
     public void Shoot(Vector3 target, Bullet bulletPrefab)
     {
+        bool playSound = false;
         foreach (Block block in _structure.GetComponentsInChildren<Block>())
         {
-            block.Attack(target, bulletPrefab, _isPlayer);
+            playSound = playSound || block.Attack(target, bulletPrefab, _isPlayer);
         }
+        if (playSound && !Audio.Instance.Shoot.isPlaying) Audio.Instance.Shoot.Play();
     }
 
     IEnumerator ScheduleDestroy()

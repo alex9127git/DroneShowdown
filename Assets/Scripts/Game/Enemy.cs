@@ -33,6 +33,7 @@ public class Enemy : Drone
 
     private void Update()
     {
+        if (PauseManager.Instance.Paused) return;
         if (!_alive) return;
         if (DistanceToPlayer() > 300f) Destroy(gameObject);
         UpdateStrat();

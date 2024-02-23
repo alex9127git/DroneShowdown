@@ -19,6 +19,8 @@ public class Player : Drone
     private float _iframeTimer = 0f;
     public float IFrameTimer { get => _iframeTimer; }
 
+    [SerializeField] private int _zone;
+
     [SerializeField] private int _earnedTokens = 0;
 
     public int EarnedTokens { get { return _earnedTokens; } }
@@ -28,6 +30,7 @@ public class Player : Drone
 
     protected override void Awake()
     {
+        _zone = -1;
         LoadStructure();
         CalculateHP();
     }
@@ -48,6 +51,7 @@ public class Player : Drone
 
     private void Update()
     {
+        if (PauseManager.Instance.Paused) return;
         _iframeTimer -= Time.deltaTime;
         if (!_alive) return;
         transform.position += new Vector3(_vx, _vy) * Time.deltaTime;
@@ -125,6 +129,7 @@ public class Player : Drone
         }
         _renderer.material.SetFloat("_Charging_Process", _surgeChargingProcess);
         _renderer.material.SetFloat("_Surging_Process", _isSurging ? 1 - _surgingProcess : 0);
+        CheckZone();
     }
 
     public Vector3 GetVelocity()
@@ -135,5 +140,64 @@ public class Player : Drone
     public void AddTokens(int amount)
     {
         _earnedTokens += amount;
+    }
+
+    public void CheckZone()
+    {
+        ZoneText z = FindObjectOfType<ZoneText>();
+        if (-490 <= transform.position.x && transform.position.x <= 490)
+        {
+            if (-490 <= transform.position.y && transform.position.y <= 490 && _zone != 0)
+            {
+                _zone = 0;
+                z.Animate("Нейтральная зона");
+            }
+            else if (510 <= transform.position.y && _zone != 1)
+            {
+                _zone = 1;
+                z.Animate("Оружейный комплекс");
+            }
+            else if (transform.position.y <= -510 && _zone != 5)
+            {
+                _zone = 5;
+                z.Animate("Партизанская долина");
+            }
+        }
+        else if (510 <= transform.position.x)
+        {
+            if (-490 <= transform.position.y && transform.position.y <= 490 && _zone != 3)
+            {
+                _zone = 3;
+                z.Animate("Зона передовой разведки");
+            }
+            else if (510 <= transform.position.y && _zone != 2)
+            {
+                _zone = 2;
+                z.Animate("Осадный рубеж");
+            }
+            else if (transform.position.y <= -510 && _zone != 4)
+            {
+                _zone = 4;
+                z.Animate("Наблюдательный пункт");
+            }
+        }
+        else if (transform.position.x <= -510)
+        {
+            if (-490 <= transform.position.y && transform.position.y <= 490 && _zone != 7)
+            {
+                _zone = 7;
+                z.Animate("Пулеметные укрепления");
+            }
+            else if (510 <= transform.position.y && _zone != 8)
+            {
+                _zone = 8;
+                z.Animate("Крепость тяжелого оружия");
+            }
+            else if (transform.position.y <= -510 && _zone != 6)
+            {
+                _zone = 6;
+                z.Animate("Блокпост \"Молния\"");
+            }
+        }
     }
 }

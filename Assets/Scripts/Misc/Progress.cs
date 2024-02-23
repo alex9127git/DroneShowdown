@@ -74,6 +74,11 @@ public class Progress : MonoBehaviour
         {
             Data.BoughtBlocks[index] += 1;
             Data.Tokens -= price;
+            Audio.Instance.UpgradeBought.Play();
+        }
+        else
+        {
+            Audio.Instance.Hit.Play();
         }
         Save();
     }
@@ -95,6 +100,11 @@ public class Progress : MonoBehaviour
         {
             Data.Sigils[index] -= Data.SigilUpgradeLevels[index] + 1;
             Data.SigilUpgradeLevels[index] += 1;
+            Audio.Instance.UpgradeBought.Play();
+        }
+        else
+        {
+            Audio.Instance.Hit.Play();
         }
         Save();
     }

@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 0
-  _attackType: 1
+  _attackType: 2
   _cooldown: 0.5
   _attackTimer: 0
   _projSpeed: 25
