@@ -51,6 +51,7 @@ public class Player : Drone
 
     private void Update()
     {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -1490f, 1490f), Mathf.Clamp(transform.position.y, -1490f, 1490f));
         if (PauseManager.Instance.Paused) return;
         _iframeTimer -= Time.deltaTime;
         if (!_alive) return;
