@@ -5,14 +5,12 @@ using UnityEngine.UI;
 [Serializable]
 public class BlockData
 {
-    public Block Prefab;
     public int TypeIndex;
     public int X;
     public int Y;
 
-    public BlockData(Block prefab, int x, int y, int index)
+    public BlockData(int x, int y, int index)
     {
-        Prefab = prefab;
         X = x;
         Y = y;
         TypeIndex = index;
@@ -59,7 +57,7 @@ public class GridManager : MonoBehaviour
         int i = 0;
         foreach (GridTile tile in GetComponentsInChildren<GridTile>())
         {
-            blocks[i] = new BlockData(_blocks.Prefabs[tile.Index], tile.X - 3, tile.Y - 3, tile.Index);
+            blocks[i] = new BlockData(tile.X - 3, tile.Y - 3, tile.Index);
             i += 1;
         }
         Progress.Instance.SaveDrone(blocks);

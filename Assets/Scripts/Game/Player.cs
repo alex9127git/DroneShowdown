@@ -23,6 +23,8 @@ public class Player : Drone
 
     [SerializeField] private int _earnedTokens = 0;
 
+    [SerializeField] private BlockList _blocks;
+
     public int EarnedTokens { get { return _earnedTokens; } }
     public bool IsSurging {  get { return _isSurging; } }
 
@@ -40,7 +42,7 @@ public class Player : Drone
         BlockData[] blocks = Progress.Instance.LoadDrone();
         foreach (BlockData bd in blocks)
         {
-            Instantiate(bd.Prefab, new Vector3(bd.X, bd.Y), Quaternion.Euler(0, 0, -180), _structure.transform);
+            Instantiate(_blocks.Prefabs[bd.TypeIndex], new Vector3(bd.X, bd.Y), Quaternion.Euler(0, 0, -180), _structure.transform);
         }
     }
 

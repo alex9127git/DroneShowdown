@@ -1015,6 +1015,7 @@ MonoBehaviour:
   _dieEffect: {fileID: 1250151575273055789}
   _zone: 0
   _earnedTokens: 0
+  _blocks: {fileID: 11400000, guid: 9b2726bd0a9ca5048b1403cf07219af1, type: 2}
   _renderer: {fileID: 1369576967}
 --- !u!114 &483921584
 MonoBehaviour:
